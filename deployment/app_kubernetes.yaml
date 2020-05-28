@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-api-deployment
+  labels:
+    app: customer-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: customer-api
+  template:
+    metadata:
+      labels:
+        app: customer-api
+    spec:
+      containers:
+        - name: customer-api
+          image: iad.ocir.io/idaguzmb9zyu/customer-api:v1
+          ports:
+            - containerPort: 8080
